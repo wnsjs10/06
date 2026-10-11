@@ -1,31 +1,50 @@
 #include <stdio.h>
 
-int sumTwo(int a, int b) 
-{
-    return (a + b);
-}
 
-int square(int n) 
+int factorial(int a)
 {
-    return (n * n);
-}
-
-int get_max(int x, int y) 
-{
-    if (x > y) 
+    int i;
+    int res = 1;
+    for(i=1; i<a; i++)
     {
-        return x;
-    } 
-    else 
-    {
-        return y;
+        res  = res * (i+1);
     }
+    return res;
 }
-int main(void) 
+int combination(int n, int r) 
 {
-    
-    printf("sumTwo result: %i\n", sumTwo(2,5)   );
-    printf("square result: %i\n", square(10)     );
-    printf("get_max result: %i\n", get_max(2,5) );
+    int up, down; 
+
+    //분자 계산: up에 저장 
+    up = factorial(n) ;
+    //분모 계산: down에 저장
+    down = factorial(n-r) * factorial(r);
+
+    return (up/down);
+
+}  
+     int main(void)
+    {   
+
+    //변수 선언 
+    int n, r, result;
+
+    //입력받기 
+    //n 입력문구 찍기 
+    printf("input n: ");
+    //scanf n 
+    scanf("%i", &n);
+    //r 입력문구 찍기 
+    printf("input r: ");
+    //scanf r   
+    scanf("%i", &r);
+
+    //combination 계산 
+    result = combination(n, r);
+
+    //결과 출력 
+    printf("The combination result is %i\n", result);
+
     return 0;
-}
+    }
+ 
